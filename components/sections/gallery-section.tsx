@@ -12,7 +12,7 @@ export function GallerySection() {
   const lastScrollRef = useRef(0);
 
   const images = [
-    { src: "/images/Srilanka.jpg", alt: "Sri Lanka tour package from Ahmedabad - international travel agency" },
+    { src: "/images/SriLanka.jpg", alt: "Sri Lanka tour package from Ahmedabad - international travel agency" },
     { src: "/images/i2.jpg", alt: "Rajasthan tour package - best travel agency Ahmedabad" },
     { src: "/images/mountain-hiking.jpg", alt: "Mountain hiking adventure Manali - tour operator Ahmedabad" },
     { src: "/images/camping-stars.jpg", alt: "Camping vacation packages - family trip from Ahmedabad" },

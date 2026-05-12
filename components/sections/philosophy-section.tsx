@@ -90,11 +90,6 @@ export function PhilosophySection() {
                   priority
                   className="object-cover"
                 />
-                <div className="absolute bottom-6 left-6">
-                  <span className="backdrop-blur-md px-4 py-2 text-sm font-medium rounded-full bg-[rgba(255,255,255,0.2)] text-white">
-                    Alpine $299
-                  </span>
-                </div>
               </div>
 
               {/* Forest Image - comes from right */}
@@ -114,11 +109,6 @@ export function PhilosophySection() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
-                <div className="absolute bottom-6 left-6">
-                  <span className="backdrop-blur-md px-4 py-2 text-sm font-medium rounded-full bg-[rgba(255,255,255,0.2)] text-white">
-                    Forest $199
-                  </span>
-                </div>
               </div>
             </div>
           </div>
@@ -126,17 +116,6 @@ export function PhilosophySection() {
       </div>
 
       {/* Description */}
-      <div className="px-6 py-20 md:px-12 md:py-28 lg:px-20 lg:py-36 lg:pb-14">
-        <div className="text-center">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground">
-            First generation
-          </p>
-          <p className="mt-8 leading-relaxed text-muted-foreground text-3xl text-center">
-            Alpine & Forest are high-tech outdoor accessories designed for modern adventurers. 
-            Lightweight, durable, and engineered for extreme conditions.
-          </p>
-        </div>
-      </div>
     </section>
   );
 }

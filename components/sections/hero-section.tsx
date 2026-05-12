@@ -6,25 +6,25 @@ import { useEffect, useRef, useState } from "react";
 const sideImages = [
   {
     src: "/images/mountain-hiking.jpg",
-    alt: "Mountain hiking adventure",
+    alt: "Best mountain hiking adventure tours from Ahmedabad - Tour packages",
     position: "left",
     span: 1,
   },
   {
     src: "/images/camping-stars.jpg",
-    alt: "Camping under stars",
+    alt: "Camping under stars - Adventure travel packages from Ahmedabad",
     position: "left",
     span: 1,
   },
   {
     src: "/images/forest-exploration.jpg",
-    alt: "Forest exploration",
+    alt: "Forest exploration trips - Customized holiday packages in India",
     position: "right",
     span: 1,
   },
   {
     src: "/images/lake-camping.jpg",
-    alt: "Lake camping view",
+    alt: "Lake camping vacation - Travel agency in Ahmedabad services",
     position: "right",
     span: 1,
   },
@@ -229,14 +229,7 @@ export function HeroSection() {
       {/* Scroll Space */}
       <div className="h-[200vh]" />
 
-      {/* Tagline */}
-      <div className="px-6 pt-32 pb-28 md:px-12 lg:px-20">
-        <p className="mx-auto max-w-2xl text-center text-2xl md:text-3xl lg:text-[2.5rem] leading-snug text-muted-foreground">
-          Lightweight, durable
-          <br />
-          and adventure-ready.
-        </p>
-      </div>
+
 
     </section>
   );

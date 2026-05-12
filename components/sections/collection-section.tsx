@@ -1,59 +1,150 @@
 "use client";
 
 import { FadeImage } from "@/components/fade-image";
+import { ProductModal } from "@/components/ui/product-modal";
+import {
+  CARD1_ITINERARY,
+  GOA_ITINERARY,
+  RAJASTHAN_ITINERARY,
+  KERALA_ITINERARY,
+  HIMACHAL_ITINERARY,
+  KASHMIR_ITINERARY,
+  ANDAMAN_ITINERARY,
+  LEHLADAKH_ITINERARY,
+  UTTARAKHAND_ITINERARY,
+  UTTARPRADESH_ITINERARY,
+  MEGHALAYA_ITINERARY,
+  SIKKIM_ITINERARY,
+  ARUNACHAL_ITINERARY,
+  KARNATAKA_ITINERARY,
+  GUJARAT_ITINERARY,
+  TAMILNADU_ITINERARY,
+} from "@/components/sections/itinerary-data-card1";
+import { useState } from "react";
 
 const accessories = [
   {
     id: 1,
-    name: "Wireless Charging Stand",
-    description: "Induction charging dock for effortless power",
+    name: "Goa Beach",
     price: "$89",
-    image: "/images/abc.jpg",
+    image: "/images/goa.jpg",
+    itinerary: GOA_ITINERARY,
   },
   {
     id: 2,
-    name: "Protective Silicone Sleeve",
-    description: "Textured grip sleeve for enhanced durability",
+    name: "Rajasthan",
     price: "$45",
-    image: "/images/i2.jpg",
+    image: "/images/r.jpg",
+    itinerary: RAJASTHAN_ITINERARY,
   },
   {
     id: 3,
-    name: "Carbon Fiber Bike Mount",
-    description: "Ultra-light mounting system for cycling",
+    name: "Kerala",
     price: "$129",
-    image: "/images/mountain-hiking.jpg",
+    image: "/images/Kerala.jpg",
+    itinerary: KERALA_ITINERARY,
   },
   {
     id: 4,
-    name: "Premium Carry Strap",
-    description: "Adjustable strap with quick-release clips",
+    name: "Himachal Pradesh",
     price: "$39",
-    image: "/images/camping-stars.jpg",
+    image: "/images/simla.jpg",
+    itinerary: HIMACHAL_ITINERARY,
   },
   {
     id: 5,
-    name: "Carabiner Clip System",
-    description: "Secure attachment for hands-free carrying",
+    name: "Kashmir",
     price: "$29",
-    image: "/images/forest-exploration.jpg",
+    image: "/images/kl.jpg",
+    itinerary: KASHMIR_ITINERARY,
   },
   {
     id: 6,
-    name: "Bluetooth Speaker Base",
-    description: "High-fidelity audio dock with grip stabilizers",
+    name: "Andaman Islands",
     price: "$149",
-    image: "/images/lake-camping.jpg",
+    image: "/images/aan.jpg",
+    itinerary: ANDAMAN_ITINERARY,
+  },
+  {
+    id: 7,
+    name: "Leh Ladakh",
+    price: "$35",
+    image: "/images/ld.jpg",
+    itinerary: LEHLADAKH_ITINERARY,
+  },
+  {
+    id: 8,
+    name: "Uttarakhand",
+    price: "$79",
+    image: "/images/Uttarakhand.jpg",
+    itinerary: UTTARAKHAND_ITINERARY,
+  },
+  {
+    id: 9,
+    name: "Uttar Pradesh",
+    price: "$59",
+    image: "/images/up.jpg",
+    itinerary: UTTARPRADESH_ITINERARY,
+  },
+  {
+    id: 10,
+    name: "Meghalaya",
+    price: "$49",
+    image: "/images/Meghalaya.jpg",
+    itinerary: MEGHALAYA_ITINERARY,
+  },
+  {
+    id: 11,
+    name: "Sikkim",
+    price: "$69",
+    image: "/images/Sikkim.jpg",
+    itinerary: SIKKIM_ITINERARY,
+  },
+  {
+    id: 12,
+    name: "Arunachal Pradesh",
+    price: "$34",
+    image: "/images/ArunachalPradesh.jpg",
+    itinerary: ARUNACHAL_ITINERARY,
+  },
+  {
+    id: 13,
+    name: "Gujarat",
+    price: "$42",
+    image: "/images/Gujarat.jpg",
+    itinerary: GUJARAT_ITINERARY,
+  },
+  {
+    id: 14,
+    name: "Karnataka",
+    price: "$89",
+    image: "/images/Karnataka.jpg",
+    itinerary: KARNATAKA_ITINERARY,
+  },
+  {
+    id: 15,
+    name: "Tamil Nadu",
+    price: "$25",
+    image: "/images/TamilNadu.jpg",
+    itinerary: TAMILNADU_ITINERARY,
+  },
+  {
+    id: 16,
+    name: "Lakshadweep",
+    price: "$95",
+    image: "/images/lakdeep.jpeg",
+    itinerary: ANDAMAN_ITINERARY,
   },
 ];
 
 export function CollectionSection() {
+  const [selectedAccessory, setSelectedAccessory] = useState<any>(null);
   return (
     <section id="accessories" className="bg-background">
       {/* Section Title */}
-      <div className="px-6 py-20 md:px-12 lg:px-20 md:py-10">
-        <h2 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl">
-          Essential Accessories
+      <div className="px-6 py-8 text-center md:px-12 md:py-12 lg:px-20 lg:py-14">
+        <h2 className="text-[8vw] font-medium tracking-tighter text-foreground md:text-[6vw] lg:text-[5vw]">
+          Domestic
         </h2>
       </div>
 
@@ -62,9 +153,12 @@ export function CollectionSection() {
         {/* Mobile: Horizontal Carousel */}
         <div className="flex gap-6 overflow-x-auto px-6 pb-4 md:hidden snap-x snap-mandatory scrollbar-hide">
           {accessories.map((accessory) => (
-            <div key={accessory.id} className="group flex-shrink-0 w-[75vw] snap-center">
+            <div
+              key={accessory.id}
+              className="group flex-shrink-0 w-[60vw] snap-center"
+            >
               {/* Image */}
-              <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-secondary">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-md bg-secondary">
                 <FadeImage
                   src={accessory.image || "/placeholder.svg"}
                   alt={accessory.name}
@@ -74,31 +168,25 @@ export function CollectionSection() {
               </div>
 
               {/* Content */}
-              <div className="py-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-medium leading-snug text-foreground">
-                      {accessory.name}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      {accessory.description}
-                    </p>
-                  </div>
-                  <span className="text-lg font-medium text-foreground">
-                    {accessory.price}
-                  </span>
-                </div>
+              <div className="py-4">
+                <h3 className="text-foreground/70 text-lg font-semibold">
+                  {accessory.name}
+                </h3>
               </div>
             </div>
           ))}
         </div>
 
         {/* Desktop: Grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-8 md:px-12 lg:px-20">
+        <div className="hidden md:grid md:grid-cols-4 gap-4 md:px-12 lg:px-20">
           {accessories.map((accessory) => (
-            <div key={accessory.id} className="group">
+            <div
+              key={accessory.id}
+              className="group cursor-pointer"
+              onClick={() => setSelectedAccessory(accessory)}
+            >
               {/* Image */}
-              <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-secondary">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-md bg-secondary">
                 <FadeImage
                   src={accessory.image || "/placeholder.svg"}
                   alt={accessory.name}
@@ -108,25 +196,23 @@ export function CollectionSection() {
               </div>
 
               {/* Content */}
-              <div className="py-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-medium leading-snug text-foreground">
-                      {accessory.name}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      {accessory.description}
-                    </p>
-                  </div>
-                  <span className="font-medium text-foreground text-2xl">
-                    {accessory.price}
-                  </span>
-                </div>
+              <div className="py-4">
+                <h3 className="text-foreground/70 text-lg font-semibold">
+                  {accessory.name}
+                </h3>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Product Modal */}
+      <ProductModal
+        isOpen={selectedAccessory !== null}
+        onClose={() => setSelectedAccessory(null)}
+        product={selectedAccessory}
+        productType="accessory"
+      />
     </section>
   );
 }

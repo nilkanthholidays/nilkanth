@@ -1,10 +1,9 @@
 "use client";
 
-const specs = [
-  { label: "Weight", value: "400g" },
-  { label: "Capacity", value: "0.5L - 2L" },
-  { label: "Setup", value: "2 min" },
-  { label: "Packed size", value: "30 x 15 cm" },
+const stats = [
+  { label: "Total Packages", value: "150+" },
+  { label: "Reviews", value: "120+" },
+  { label: "Happy Travelers", value: "1000+" },
 ];
 
 export function EditorialSection() {
@@ -19,19 +18,14 @@ export function EditorialSection() {
         
       </div>
 
-      {/* Specs Grid */}
-      <div className="grid grid-cols-2 border-t border-border md:grid-cols-4">
-        {specs.map((spec) => (
-          <div
-            key={spec.label}
-            className="border-b border-r border-border p-8 text-center last:border-r-0 md:border-b-0"
-          >
-            <p className="mb-2 text-xs uppercase tracking-widest text-muted-foreground">
-              {spec.label}
+      {/* Stats Grid */}
+      <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-3 px-6 py-12 md:px-12 md:py-16 lg:px-20 border-t border-border">
+        {stats.map((stat) => (
+          <div key={stat.label} className="text-center">
+            <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
+              {stat.value}
             </p>
-            <p className="font-medium text-foreground text-4xl">
-              {spec.value}
-            </p>
+            <p className="mt-2 text-sm text-muted-foreground">{stat.label}</p>
           </div>
         ))}
       </div>

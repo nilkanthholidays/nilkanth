@@ -12,14 +12,14 @@ export function GallerySection() {
   const lastScrollRef = useRef(0);
 
   const images = [
-    { src: "/images/abc.jpg", alt: "Thermal bottle on bike" },
-    { src: "/images/i2.jpg", alt: "Thermal bottle by lake" },
-    { src: "/images/mountain-hiking.jpg", alt: "Thermal bottle in water" },
-    { src: "/images/camping-stars.jpg", alt: "Thermal bottle by stream" },
-    { src: "/images/forest-exploration.jpg", alt: "Thermal bottle by fire" },
-    { src: "/images/lake-camping.jpg", alt: "Thermal bottle in snow" },
-    { src: "/images/abc.jpg", alt: "Thermal bottle on mountain" },
-    { src: "/images/camping-stars.jpg", alt: "Thermal bottle at canyon" },
+    { src: "/images/srilanka.jpg", alt: "Sri Lanka tour package from Ahmedabad - international travel agency" },
+    { src: "/images/i2.jpg", alt: "Rajasthan tour package - best travel agency Ahmedabad" },
+    { src: "/images/mountain-hiking.jpg", alt: "Mountain hiking adventure Manali - tour operator Ahmedabad" },
+    { src: "/images/camping-stars.jpg", alt: "Camping vacation packages - family trip from Ahmedabad" },
+    { src: "/images/forest-exploration.jpg", alt: "Forest exploration adventure - customized holiday packages" },
+    { src: "/images/lake-camping.jpg", alt: "Lake camping Kerala package - travel consultant Ahmedabad" },
+    { src: "/images/vaa.jpg", alt: "Mountain peak adventure - Kashmir tour packages from Ahmedabad" },
+    { src: "/images/va.jpg", alt: "Canyon trekking - group tour packages from Ahmedabad" },
   ];
 
   // Calculate section height based on content width

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 export function Header() {
@@ -24,59 +25,70 @@ export function Header() {
         boxShadow: isScrolled ? "rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px" : "none"
       }}
     >
-      <div className="flex items-center justify-between transition-all duration-300 px-2 pl-5 py-2">
+      <div className="flex items-center justify-between transition-all duration-300 px-4 py-3 gap-2 w-full">
         {/* Logo */}
-        <Link href="#" className={`text-lg font-medium tracking-tight transition-colors duration-300 ${isScrolled ? "text-foreground" : "text-white"}`}>
-          EVASION
+        <Link href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80 flex-shrink-0">
+          <Image
+            src="/images/okk.png"
+            alt="Nilkanth Holidays Logo"
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
+          <span className={`text-sm font-bold tracking-wider transition-colors duration-300 hidden sm:inline flex-shrink-0 ${isScrolled ? "text-foreground" : "text-white"}`}>
+            NILKANTH HOLIDAYS
+          </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-10 md:flex">
-          <Link
-            href="#products"
-            className={`text-sm transition-colors ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"}`}
-          >
-            Products
-          </Link>
-          <Link
-            href="#technology"
-            className={`text-sm transition-colors ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"}`}
-          >
-            Technology
-          </Link>
-          <Link
-            href="#gallery"
-            className={`text-sm transition-colors ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"}`}
-          >
-            Gallery
-          </Link>
-          <Link
-            href="#accessories"
-            className={`text-sm transition-colors ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"}`}
-          >
-            Accessories
-          </Link>
+        {/* Desktop Navigation - Centered */}
+        <nav className="hidden md:flex items-center justify-center flex-1 gap-1">
+          <div className="flex items-center gap-2 bg-opacity-30">
+            <Link
+              href="#accessories"
+              className={`px-3 py-1.5 text-sm transition-colors ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"}`}
+            >
+              Domestic
+            </Link>
+            <Link
+              href="#technology"
+              className={`px-3 py-1.5 text-sm transition-colors ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"}`}
+            >
+              International
+            </Link>
+            <Link
+              href="#gallery"
+              className={`px-3 py-1.5 text-sm transition-colors ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"}`}
+            >
+              Gallery
+            </Link>
+            <Link
+              href="#footer"
+              className={`px-3 py-1.5 text-sm transition-colors whitespace-nowrap ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"}`}
+            >
+              Review
+            </Link>
+          </div>
         </nav>
 
-        {/* CTA */}
-        <div className="hidden items-center gap-6 md:flex">
+        {/* Right Side Actions */}
+        <div className="flex items-center gap-2 flex-shrink-0">
           <Link
-            href="#reserve"
-            className={`px-4 py-2 text-sm font-medium transition-all rounded-full ${isScrolled ? "bg-foreground text-background hover:opacity-80" : "bg-white text-foreground hover:bg-white/90"}`}
+            href="#products"
+            className={`hidden sm:block px-4 py-2 text-sm font-medium transition-all rounded-full whitespace-nowrap ${isScrolled ? "bg-foreground text-background hover:opacity-80" : "bg-white text-foreground hover:bg-white/90"}`}
           >
-            Buy the product
+            About Us
           </Link>
+          
+          {/* Mobile Menu Button */}
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className={`transition-colors md:hidden flex-shrink-0 ${isScrolled ? "text-foreground" : "text-white"}`}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          type="button"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`transition-colors md:hidden ${isScrolled ? "text-foreground" : "text-white"}`}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
       </div>
 
       {/* Mobile Menu */}
@@ -84,18 +96,18 @@ export function Header() {
         <div className="border-t border-border bg-background px-6 py-8 md:hidden rounded-b-2xl">
           <nav className="flex flex-col gap-6">
             <Link
-              href="#products"
+              href="#accessories"
               className="text-lg text-foreground"
               onClick={() => setIsMenuOpen(false)}
             >
-              Products
+              Domestic
             </Link>
             <Link
               href="#technology"
               className="text-lg text-foreground"
               onClick={() => setIsMenuOpen(false)}
             >
-              Technology
+              International
             </Link>
             <Link
               href="#gallery"
@@ -105,11 +117,18 @@ export function Header() {
               Gallery
             </Link>
             <Link
-              href="#accessories"
+              href="#footer"
               className="text-lg text-foreground"
               onClick={() => setIsMenuOpen(false)}
             >
-              Accessories
+              Review
+            </Link>
+            <Link
+              href="#products"
+              className="text-lg text-foreground"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About Us
             </Link>
             <Link
               href="#reserve"

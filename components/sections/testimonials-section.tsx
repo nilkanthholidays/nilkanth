@@ -7,10 +7,23 @@ export function TestimonialsSection() {
     <section id="about" className="bg-background">
       {/* Large Text Statement */}
       <div className="px-6 py-24 md:px-12 md:py-32 lg:px-20 lg:py-40">
-        <p className="mx-auto max-w-5xl text-2xl leading-relaxed text-foreground md:text-3xl lg:text-[2.5rem] lg:leading-snug">
-          Alpine & Forest accessories combine aerospace-grade materials with cutting-edge technology — 
-          designed for explorers who refuse to compromise on quality or performance in the wild.
-        </p>
+        <div className="mx-auto max-w-5xl text-center space-y-3">
+          <p className="text-2xl md:text-3xl lg:text-4xl leading-relaxed text-foreground">
+            Nilkanth Holidays is your trusted travel partner,
+          </p>
+          <p className="text-2xl md:text-3xl lg:text-4xl leading-relaxed text-foreground">
+            dedicated to making journeys memorable.
+          </p>
+          <p className="text-2xl md:text-3xl lg:text-4xl leading-relaxed text-foreground">
+            We specialize in India & International tours,
+          </p>
+          <p className="text-2xl md:text-3xl lg:text-4xl leading-relaxed text-foreground">
+            offering personalized experiences, comfort,
+          </p>
+          <p className="text-2xl md:text-3xl lg:text-4xl leading-relaxed text-foreground">
+            and affordable packages.
+          </p>
+        </div>
       </div>
 
       {/* About Image */}

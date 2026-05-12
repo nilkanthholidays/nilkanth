@@ -1,7 +1,6 @@
 const nextConfig = {
   output: 'export',
-  trailingSlash: true,
-  
+  trailingSlash: true,  assetPrefix: '/next/',  
   // Disable static optimization to ensure files are served correctly
   staticPageGenerationTimeout: 1000,
 

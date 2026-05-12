@@ -7,8 +7,7 @@
     "dev": "next dev -p 3000",
     "lint": "eslint .",
     "start": "next start",
-    "predeploy": "npm run build && node rename-next.js",
-    "deploy": "gh-pages -d out --no-history --force"
+    "deploy": "node deploy.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

@@ -73,10 +73,10 @@ export function Header() {
         {/* Right Side Actions */}
         <div className="flex items-center gap-2 flex-shrink-0">
           <Link
-            href="#products"
+            href="#get-in-touch"
             className={`hidden sm:block px-4 py-2 text-sm font-medium transition-all rounded-full whitespace-nowrap ${isScrolled ? "bg-foreground text-background hover:opacity-80" : "bg-white text-foreground hover:bg-white/90"}`}
           >
-            About Us
+            Contact Us
           </Link>
           
           {/* Mobile Menu Button */}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Instagram, MapPin } from "lucide-react";
 
 const footerLinks = {
   about: [
@@ -139,14 +140,22 @@ export function FooterSection() {
           
 
           {/* Social Links */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             <Link
               href="https://www.instagram.com/nilkanthholidays.in?igsh=MXhxMWdxNzhodWZjNw=="
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+              aria-label="Instagram"
             >
-              Instagram
+              <Instagram size={24} />
+            </Link>
+            <Link
+              href="#get-in-touch"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+              aria-label="Location"
+            >
+              <MapPin size={24} />
             </Link>
           </div>
         </div>

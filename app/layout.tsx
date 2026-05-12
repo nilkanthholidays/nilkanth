@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     description: 'Expert travel planning and tour packages from Ahmedabad. Offering international and domestic tours, visa consultancy, flight bookings, and customized holiday experiences.',
     type: 'website',
     locale: 'en_IN',
+    url: 'https://nilkanthholidays.in',
   },
   icons: {
     icon: [
@@ -39,7 +40,7 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://nilkanthholidays.com" />
+        <link rel="canonical" href="https://nilkanthholidays.in" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

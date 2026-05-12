@@ -1,6 +1,9 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
+  
+  // Disable static optimization to ensure files are served correctly
+  staticPageGenerationTimeout: 1000,
 
   typescript: {
     ignoreBuildErrors: true,

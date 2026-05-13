@@ -155,7 +155,8 @@ export function CollectionSection() {
           {accessories.map((accessory) => (
             <div
               key={accessory.id}
-              className="group flex-shrink-0 w-[60vw] snap-center"
+              className="group flex-shrink-0 w-[60vw] snap-center cursor-pointer"
+              onClick={() => setSelectedAccessory(accessory)}
             >
               {/* Image */}
               <div className="relative aspect-[3/4] overflow-hidden rounded-md bg-secondary">

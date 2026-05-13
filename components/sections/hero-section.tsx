@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 const sideImages = [
-  { src: "/images/mountain-hiking.jpg", alt: "Mountain hiking adventure tours from Ahmedabad", position: "left" },
-  { src: "/images/camping-stars.jpg",   alt: "Camping under stars - Adventure travel packages", position: "left" },
-  { src: "/images/forest-exploration.jpg", alt: "Forest exploration trips - Holiday packages India", position: "right" },
-  { src: "/images/lake-camping.jpg",    alt: "Lake camping vacation - Travel agency Ahmedabad", position: "right" },
+  { src: "/images/mountain-hiking.jpg", alt: "Best mountain hiking adventure tours from Ahmedabad - Tour packages", position: "left", span: 1 },
+  { src: "/images/camping-stars.jpg",   alt: "Camping under stars - Adventure travel packages from Ahmedabad",     position: "left", span: 1 },
+  { src: "/images/forest-exploration.jpg", alt: "Forest exploration trips - Customized holiday packages in India", position: "right", span: 1 },
+  { src: "/images/lake-camping.jpg",    alt: "Lake camping vacation - Travel agency in Ahmedabad services",        position: "right", span: 1 },
 ];
 
 export function HeroSection() {
@@ -28,63 +28,54 @@ export function HeroSection() {
     const container = containerRef.current;
     if (!section || !text || !center || !leftCol || !rightCol || !container) return;
 
-    const isMobile = window.innerWidth < 768;
-
     const update = () => {
-      const rect     = section.getBoundingClientRect();
-      const total    = window.innerHeight * 2;
-      const scrolled = -rect.top;
-      // p = 0 at top, 1 at fully scrolled
-      const p = Math.max(0, Math.min(1, scrolled / total));
+      const rect            = section.getBoundingClientRect();
+      const scrollableHeight = window.innerHeight * 2;
+      const scrolled        = -rect.top;
+      const progress        = Math.max(0, Math.min(1, scrolled / scrollableHeight));
 
-      // text fades out in first 25% of scroll
-      const textOpacity = Math.max(0, 1 - p / 0.25);
+      // exact same math as original
+      const textOpacity      = Math.max(0, 1 - progress / 0.2);
+      const imageProgress    = Math.max(0, Math.min(1, (progress - 0.2) / 0.8));
 
-      // layout animates from 0.1 to 1.0
-      const lp = Math.max(0, Math.min(1, (p - 0.1) / 0.9));
+      const centerWidth      = 100 - imageProgress * 58;
+      const centerHeight     = 100 - imageProgress * 30;
+      const sideWidth        = imageProgress * 22;
+      const sideOpacity      = imageProgress;
+      const sideTranslateLeft  = -100 + imageProgress * 100;
+      const sideTranslateRight =  100 - imageProgress * 100;
+      const borderRadius     = imageProgress * 24;
+      const gap              = imageProgress * 16;
+      const sideTranslateY   = -(imageProgress * 15);
+      const padding          = imageProgress * 16;
+      const paddingBottom    = 60 + imageProgress * 40;
 
-      // ── INITIAL STATE (lp=0): equal 3-col grid ──────────────────
-      // side cols = 22%, center = 56%  (22+56+22=100)
-      // ── FINAL STATE (lp=1): bento ───────────────────────────────
-      // side cols shrink to 0%, center fills 100%
-      const sideW   = isMobile ? 22 * (1 - lp) : 22 * (1 - lp);
-      const centerW = 100 - sideW * 2;
-      const centerH = isMobile
-        ? 55 + lp * 45          // 55% → 100%
-        : 65 + lp * 35;         // 65% → 100%
-
-      const br  = 12 + lp * 12; // border-radius 12 → 24
-      const gap = isMobile ? 6 : 8 + lp * 8;
-      const pad = isMobile ? 6 : 10 + lp * 6;
-      const pb  = 60 + lp * 40;
-
-      // side columns slide outward as they shrink
-      const slideLeft  = -(lp * 100);   // 0% → -100%
-      const slideRight =   lp * 100;    // 0% → +100%
-
+      // write directly to DOM — no React re-render, smooth on mobile
       text.style.opacity = String(textOpacity);
 
-      center.style.width        = `${centerW}%`;
-      center.style.height       = `${centerH}%`;
-      center.style.borderRadius = `${br}px`;
+      center.style.width        = `${centerWidth}%`;
+      center.style.height       = `${centerHeight}%`;
+      center.style.borderRadius = `${borderRadius}px`;
 
-      leftCol.style.width     = `${sideW}%`;
-      leftCol.style.transform = `translateX(${slideLeft}%)`;
+      leftCol.style.width     = `${sideWidth}%`;
+      leftCol.style.opacity   = String(sideOpacity);
+      leftCol.style.transform = `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}%)`;
       leftCol.style.gap       = `${gap}px`;
 
-      rightCol.style.width     = `${sideW}%`;
-      rightCol.style.transform = `translateX(${slideRight}%)`;
+      rightCol.style.width     = `${sideWidth}%`;
+      rightCol.style.opacity   = String(sideOpacity);
+      rightCol.style.transform = `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}%)`;
       rightCol.style.gap       = `${gap}px`;
 
       container.style.gap           = `${gap}px`;
-      container.style.padding       = `${pad}px`;
-      container.style.paddingBottom = `${pb}px`;
+      container.style.padding       = `${padding}px`;
+      container.style.paddingBottom = `${paddingBottom}px`;
 
       leftCol.querySelectorAll<HTMLElement>(".si").forEach(el => {
-        el.style.borderRadius = `${br}px`;
+        el.style.borderRadius = `${borderRadius}px`;
       });
       rightCol.querySelectorAll<HTMLElement>(".si").forEach(el => {
-        el.style.borderRadius = `${br}px`;
+        el.style.borderRadius = `${borderRadius}px`;
       });
     };
 
@@ -109,17 +100,16 @@ export function HeroSection() {
           <div
             ref={containerRef}
             className="relative flex h-full w-full items-stretch justify-center"
-            style={{ gap: "6px", padding: "6px", paddingBottom: "60px" }}
           >
             {/* LEFT */}
             <div
               ref={leftColRef}
-              className="flex flex-col overflow-hidden"
-              style={{ width: "22%", gap: "6px" }}
+              className="flex flex-col"
+              style={{ width: "0%", opacity: 0 }}
             >
-              {sideImages.filter(i => i.position === "left").map((img, idx) => (
-                <div key={idx} className="si relative overflow-hidden" style={{ flex: 1, borderRadius: "12px" }}>
-                  <Image src={img.src} alt={img.alt} fill sizes="(max-width:768px) 22vw, 22vw" className="object-cover" />
+              {sideImages.filter(img => img.position === "left").map((img, idx) => (
+                <div key={idx} className="si relative overflow-hidden" style={{ flex: img.span }}>
+                  <Image src={img.src} alt={img.alt} fill sizes="22vw" className="object-cover" />
                 </div>
               ))}
             </div>
@@ -127,18 +117,18 @@ export function HeroSection() {
             {/* CENTER */}
             <div
               ref={centerRef}
-              className="relative overflow-hidden flex-shrink-0"
-              style={{ width: "56%", height: "65%", borderRadius: "12px" }}
+              className="relative overflow-hidden"
+              style={{ width: "100%", height: "100%", flex: "0 0 auto" }}
             >
-              <Image src="/images/abc.jpg" alt="Nilkanth Holidays Hero" fill priority sizes="100vw" className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+              <Image src="/images/abc.jpg" alt="Hero" fill priority sizes="100vw" className="object-cover" />
+
               <div
                 ref={textRef}
-                className="absolute inset-0 flex items-end justify-start pl-4 md:pl-10 pb-3"
+                className="absolute inset-0 flex items-end justify-start overflow-hidden pl-6 md:pl-10 pb-2"
               >
-                <h1 className="text-white font-medium tracking-tighter leading-[0.92]">
-                  <span className="block text-[20vw] md:text-[15vw] animate-[slideUp_0.8s_ease-out_forwards]">Nilkanth</span>
-                  <span className="block text-[14vw] md:text-[11vw] mt-1 animate-[slideUp_1s_ease-out_forwards]">Holidays</span>
+                <h1 className="text-white font-medium tracking-tighter leading-[0.92] text-left">
+                  <span className="block text-[22vw] animate-[slideUp_0.8s_ease-out_forwards]">Nilkanth</span>
+                  <span className="block text-[16vw] mt-3 animate-[slideUp_1s_ease-out_forwards]">Holidays</span>
                 </h1>
               </div>
             </div>
@@ -146,12 +136,12 @@ export function HeroSection() {
             {/* RIGHT */}
             <div
               ref={rightColRef}
-              className="flex flex-col overflow-hidden"
-              style={{ width: "22%", gap: "6px" }}
+              className="flex flex-col"
+              style={{ width: "0%", opacity: 0 }}
             >
-              {sideImages.filter(i => i.position === "right").map((img, idx) => (
-                <div key={idx} className="si relative overflow-hidden" style={{ flex: 1, borderRadius: "12px" }}>
-                  <Image src={img.src} alt={img.alt} fill sizes="(max-width:768px) 22vw, 22vw" className="object-cover" />
+              {sideImages.filter(img => img.position === "right").map((img, idx) => (
+                <div key={idx} className="si relative overflow-hidden" style={{ flex: img.span }}>
+                  <Image src={img.src} alt={img.alt} fill sizes="22vw" className="object-cover" />
                 </div>
               ))}
             </div>
@@ -159,7 +149,6 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll space */}
       <div className="h-[200vh]" />
     </section>
   );

@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 const sideImages = [
   {
     src: "/images/mountain-hiking.jpg",
-    alt: "Best mountain hiking adventure tours from Ahmedabad - Tour packages",
+    alt: "Best mountain hiking adventure tours from Ahmedabad",
     position: "left",
   },
   {
@@ -50,29 +50,47 @@ export function HeroSection() {
       const rect = section.getBoundingClientRect();
       const scrollableHeight = window.innerHeight * 2;
       const scrolled = -rect.top;
+      // progress: 0 = page load (grid visible), 1 = fully scrolled (bento layout)
       const progress = Math.max(0, Math.min(1, scrolled / scrollableHeight));
 
-      const textOpacity = Math.max(0, 1 - progress / 0.2);
-      const imageProgress = Math.max(0, Math.min(1, (progress - 0.2) / 0.8));
+      // Phase 1 (0→0.3): grid → bento transition
+      // Phase 2 (0.3→1): text fades out
+      const layoutProgress = Math.min(1, progress / 0.3);
+      const textOpacity = Math.max(0, 1 - Math.max(0, (progress - 0.3) / 0.3));
 
-      // Mobile: side images smaller, less shift
-      const maxSideWidth = isMobile ? 18 : 22;
-      const maxCenterShrink = isMobile ? 40 : 58;
-      const maxHeightShrink = isMobile ? 20 : 30;
+      // At progress=0: 4 equal squares grid
+      // At progress=1: center big, sides small (bento)
+      const iM = isMobile;
 
-      const centerWidth = 100 - imageProgress * maxCenterShrink;
-      const centerHeight = 100 - imageProgress * maxHeightShrink;
-      const sideWidth = imageProgress * maxSideWidth;
-      const sideOpacity = imageProgress;
-      const sideTranslateLeft = -100 + imageProgress * 100;
-      const sideTranslateRight = 100 - imageProgress * 100;
-      const borderRadius = imageProgress * 24;
-      const gap = imageProgress * (isMobile ? 8 : 16);
-      const sideTranslateY = -(imageProgress * 15);
-      const padding = imageProgress * (isMobile ? 8 : 16);
-      const paddingBottom = 60 + imageProgress * 40;
+      // Side columns: start at 25% (equal grid), end at 18/22%
+      const sideStart = 25;
+      const sideEnd = iM ? 18 : 22;
+      const sideWidth = sideStart + (sideEnd - sideStart) * layoutProgress;
 
-      // Apply directly to DOM — no React state, no re-render
+      // Center: starts at 50% (2 cols), expands to fill rest
+      const centerStart = 50;
+      const centerEnd = iM ? 64 : 56;
+      const centerWidth = centerStart + (centerEnd - centerStart) * layoutProgress;
+
+      // Height: side cols start at 50% height (2 rows), go to 80%
+      const heightStart = 50;
+      const heightEnd = iM ? 70 : 80;
+      const centerHeight = heightStart + (heightEnd - heightStart) * layoutProgress;
+
+      // Border radius: 12px at start, 24px at end
+      const borderRadius = 12 + layoutProgress * 12;
+
+      // Gap
+      const gap = iM ? 6 + layoutProgress * 2 : 8 + layoutProgress * 8;
+
+      // Padding
+      const padding = iM ? 8 : 12 + layoutProgress * 4;
+      const paddingBottom = iM ? 60 : 60 + layoutProgress * 40;
+
+      // Side translate: start at 0 (already in place), slight upward shift at end
+      const sideTranslateY = -(layoutProgress * (iM ? 8 : 15));
+
+      // Apply to DOM
       text.style.opacity = String(textOpacity);
 
       center.style.width = `${centerWidth}%`;
@@ -80,24 +98,23 @@ export function HeroSection() {
       center.style.borderRadius = `${borderRadius}px`;
 
       leftCol.style.width = `${sideWidth}%`;
-      leftCol.style.opacity = String(sideOpacity);
-      leftCol.style.transform = `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}%)`;
+      leftCol.style.opacity = "1";
+      leftCol.style.transform = `translateY(${sideTranslateY}%)`;
       leftCol.style.gap = `${gap}px`;
 
       rightCol.style.width = `${sideWidth}%`;
-      rightCol.style.opacity = String(sideOpacity);
-      rightCol.style.transform = `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}%)`;
+      rightCol.style.opacity = "1";
+      rightCol.style.transform = `translateY(${sideTranslateY}%)`;
       rightCol.style.gap = `${gap}px`;
 
       container.style.gap = `${gap}px`;
       container.style.padding = `${padding}px`;
       container.style.paddingBottom = `${paddingBottom}px`;
 
-      // border radius on side image wrappers
-      leftCol.querySelectorAll<HTMLElement>(".side-img-wrap").forEach(el => {
+      leftCol.querySelectorAll<HTMLElement>(".side-img-wrap").forEach((el) => {
         el.style.borderRadius = `${borderRadius}px`;
       });
-      rightCol.querySelectorAll<HTMLElement>(".side-img-wrap").forEach(el => {
+      rightCol.querySelectorAll<HTMLElement>(".side-img-wrap").forEach((el) => {
         el.style.borderRadius = `${borderRadius}px`;
       });
     };
@@ -108,7 +125,7 @@ export function HeroSection() {
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    update();
+    update(); // run on mount so initial state is correct
 
     return () => {
       window.removeEventListener("scroll", onScroll);
@@ -124,13 +141,13 @@ export function HeroSection() {
           <div
             ref={containerRef}
             className="relative flex h-full w-full items-stretch justify-center"
-            style={{ paddingBottom: "60px" }}
+            style={{ gap: "6px", padding: "8px", paddingBottom: "60px" }}
           >
-            {/* LEFT */}
+            {/* LEFT COLUMN — starts visible as 2 square images */}
             <div
               ref={leftColRef}
-              className="flex flex-col overflow-hidden"
-              style={{ width: "0%", opacity: 0 }}
+              className="flex flex-col"
+              style={{ width: "25%", gap: "6px" }}
             >
               {sideImages
                 .filter((img) => img.position === "left")
@@ -138,24 +155,29 @@ export function HeroSection() {
                   <div
                     key={idx}
                     className="side-img-wrap relative overflow-hidden"
-                    style={{ flex: 1 }}
+                    style={{ flex: 1, borderRadius: "12px" }}
                   >
                     <Image
                       src={img.src}
                       alt={img.alt}
                       fill
-                      sizes="(max-width: 768px) 18vw, 22vw"
+                      sizes="(max-width: 768px) 25vw, 22vw"
                       className="object-cover"
                     />
                   </div>
                 ))}
             </div>
 
-            {/* CENTER */}
+            {/* CENTER — starts as 50% width */}
             <div
               ref={centerRef}
               className="relative overflow-hidden"
-              style={{ width: "100%", height: "100%", flex: "0 0 auto" }}
+              style={{
+                width: "50%",
+                height: "50%",
+                flex: "0 0 auto",
+                borderRadius: "12px",
+              }}
             >
               <Image
                 src="/images/abc.jpg"
@@ -166,27 +188,27 @@ export function HeroSection() {
                 className="object-cover"
               />
 
-              {/* TEXT */}
+              {/* TEXT overlay */}
               <div
                 ref={textRef}
-                className="absolute inset-0 flex items-end justify-start overflow-hidden pl-6 md:pl-10 pb-2"
+                className="absolute inset-0 flex items-end justify-start overflow-hidden pl-4 md:pl-10 pb-2"
               >
                 <h1 className="text-white font-medium tracking-tighter leading-[0.92] text-left">
-                  <span className="block text-[22vw] animate-[slideUp_0.8s_ease-out_forwards]">
+                  <span className="block text-[22vw] md:text-[18vw] animate-[slideUp_0.8s_ease-out_forwards]">
                     Nilkanth
                   </span>
-                  <span className="block text-[16vw] mt-3 animate-[slideUp_1s_ease-out_forwards]">
+                  <span className="block text-[16vw] md:text-[13vw] mt-2 animate-[slideUp_1s_ease-out_forwards]">
                     Holidays
                   </span>
                 </h1>
               </div>
             </div>
 
-            {/* RIGHT */}
+            {/* RIGHT COLUMN — starts visible as 2 square images */}
             <div
               ref={rightColRef}
-              className="flex flex-col overflow-hidden"
-              style={{ width: "0%", opacity: 0 }}
+              className="flex flex-col"
+              style={{ width: "25%", gap: "6px" }}
             >
               {sideImages
                 .filter((img) => img.position === "right")
@@ -194,13 +216,13 @@ export function HeroSection() {
                   <div
                     key={idx}
                     className="side-img-wrap relative overflow-hidden"
-                    style={{ flex: 1 }}
+                    style={{ flex: 1, borderRadius: "12px" }}
                   >
                     <Image
                       src={img.src}
                       alt={img.alt}
                       fill
-                      sizes="(max-width: 768px) 18vw, 22vw"
+                      sizes="(max-width: 768px) 25vw, 22vw"
                       className="object-cover"
                     />
                   </div>

@@ -1,16 +1,16 @@
 1:"$Sreact.fragment"
-2:I[48738,["/_next/static/chunks/c387eebed672b748.js","/_next/static/chunks/0f1105588e67120a.js","/_next/static/chunks/7d1f95891a545fbb.js"],"Header"]
-3:I[40744,["/_next/static/chunks/c387eebed672b748.js","/_next/static/chunks/0f1105588e67120a.js","/_next/static/chunks/7d1f95891a545fbb.js"],"HeroSection"]
-4:I[92637,["/_next/static/chunks/c387eebed672b748.js","/_next/static/chunks/0f1105588e67120a.js","/_next/static/chunks/7d1f95891a545fbb.js"],"PhilosophySection"]
-5:I[65916,["/_next/static/chunks/c387eebed672b748.js","/_next/static/chunks/0f1105588e67120a.js","/_next/static/chunks/7d1f95891a545fbb.js"],"FeaturedProductsSection"]
-6:I[43768,["/_next/static/chunks/c387eebed672b748.js","/_next/static/chunks/0f1105588e67120a.js","/_next/static/chunks/7d1f95891a545fbb.js"],"TechnologySection"]
-7:I[83715,["/_next/static/chunks/c387eebed672b748.js","/_next/static/chunks/0f1105588e67120a.js","/_next/static/chunks/7d1f95891a545fbb.js"],"GallerySection"]
-8:I[73800,["/_next/static/chunks/c387eebed672b748.js","/_next/static/chunks/0f1105588e67120a.js","/_next/static/chunks/7d1f95891a545fbb.js"],"CollectionSection"]
-9:I[17783,["/_next/static/chunks/c387eebed672b748.js","/_next/static/chunks/0f1105588e67120a.js","/_next/static/chunks/7d1f95891a545fbb.js"],"EditorialSection"]
-a:I[73522,["/_next/static/chunks/c387eebed672b748.js","/_next/static/chunks/0f1105588e67120a.js","/_next/static/chunks/7d1f95891a545fbb.js"],"TestimonialsSection"]
-b:I[74701,["/_next/static/chunks/c387eebed672b748.js","/_next/static/chunks/0f1105588e67120a.js","/_next/static/chunks/7d1f95891a545fbb.js"],"ContactSection"]
-c:I[98930,["/_next/static/chunks/c387eebed672b748.js","/_next/static/chunks/0f1105588e67120a.js","/_next/static/chunks/7d1f95891a545fbb.js"],"FooterSection"]
-d:I[37382,["/_next/static/chunks/0f1105588e67120a.js","/_next/static/chunks/6a2c167fc061ea93.js"],"OutletBoundary"]
+2:I[2346,["13","static/chunks/13-bc4f7c3dbd0e81e3.js","974","static/chunks/app/page-c652c6f6dd046f0f.js"],"Header"]
+3:I[4266,["13","static/chunks/13-bc4f7c3dbd0e81e3.js","974","static/chunks/app/page-c652c6f6dd046f0f.js"],"HeroSection"]
+4:I[3251,["13","static/chunks/13-bc4f7c3dbd0e81e3.js","974","static/chunks/app/page-c652c6f6dd046f0f.js"],"PhilosophySection"]
+5:I[4893,["13","static/chunks/13-bc4f7c3dbd0e81e3.js","974","static/chunks/app/page-c652c6f6dd046f0f.js"],"FeaturedProductsSection"]
+6:I[9452,["13","static/chunks/13-bc4f7c3dbd0e81e3.js","974","static/chunks/app/page-c652c6f6dd046f0f.js"],"TechnologySection"]
+7:I[56,["13","static/chunks/13-bc4f7c3dbd0e81e3.js","974","static/chunks/app/page-c652c6f6dd046f0f.js"],"GallerySection"]
+8:I[5898,["13","static/chunks/13-bc4f7c3dbd0e81e3.js","974","static/chunks/app/page-c652c6f6dd046f0f.js"],"CollectionSection"]
+9:I[9329,["13","static/chunks/13-bc4f7c3dbd0e81e3.js","974","static/chunks/app/page-c652c6f6dd046f0f.js"],"EditorialSection"]
+a:I[8446,["13","static/chunks/13-bc4f7c3dbd0e81e3.js","974","static/chunks/app/page-c652c6f6dd046f0f.js"],"TestimonialsSection"]
+b:I[3270,["13","static/chunks/13-bc4f7c3dbd0e81e3.js","974","static/chunks/app/page-c652c6f6dd046f0f.js"],"ContactSection"]
+c:I[399,["13","static/chunks/13-bc4f7c3dbd0e81e3.js","974","static/chunks/app/page-c652c6f6dd046f0f.js"],"FooterSection"]
+d:I[484,[],"OutletBoundary"]
 e:"$Sreact.suspense"
-0:{"buildId":"emONGkW-OI-mRT6T7VXWy","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"min-h-screen bg-background","children":[["$","$L2",null,{}],["$","$L3",null,{}],["$","$L4",null,{}],["$","$L5",null,{}],["$","$L6",null,{}],["$","$L7",null,{}],["$","$L8",null,{}],["$","$L9",null,{}],["$","$La",null,{}],["$","$Lb",null,{}],["$","$Lc",null,{}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/0f1105588e67120a.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/7d1f95891a545fbb.js","async":true}]],["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"9lcwSohZZlIVRxY9_KjMS","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"min-h-screen bg-background","children":[["$","$L2",null,{}],["$","$L3",null,{}],["$","$L4",null,{}],["$","$L5",null,{}],["$","$L6",null,{}],["$","$L7",null,{}],["$","$L8",null,{}],["$","$L9",null,{}],["$","$La",null,{}],["$","$Lb",null,{}],["$","$Lc",null,{}]]}],null,["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]]}],"loading":null,"isPartial":false}
 f:null

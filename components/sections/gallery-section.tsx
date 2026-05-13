@@ -125,6 +125,8 @@ export function GallerySection() {
                   alt={image.alt}
                   fill
                   sizes="(max-width: 768px) 85vw, (max-width: 1024px) 60vw, 45vw"
+                  loading="lazy"
+                  decoding="async"
                   className="object-cover"
                 />
               </div>

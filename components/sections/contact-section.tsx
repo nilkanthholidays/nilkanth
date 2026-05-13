@@ -141,6 +141,16 @@ export function ContactSection() {
                   </a>
                 </div>
               </div>
+
+              <div>
+                <p className="font-bold text-sm mb-3">Email</p>
+                <a
+                  href="mailto:info@nilkanthholidays.in"
+                  className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
+                >
+                  <span>✉️</span> info@nilkanthholidays.in
+                </a>
+              </div>
             </div>
 
             {/* Map */}

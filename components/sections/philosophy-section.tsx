@@ -88,6 +88,7 @@ export function PhilosophySection() {
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority
+                  decoding="async"
                   className="object-cover"
                 />
               </div>
@@ -107,6 +108,8 @@ export function PhilosophySection() {
                   alt="V1 Thermal mug in forest setting"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
+                  decoding="async"
                   className="object-cover"
                 />
               </div>

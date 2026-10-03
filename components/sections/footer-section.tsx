@@ -31,7 +31,7 @@ export function FooterSection() {
             </p>  
             
           </div>
-          }
+          
           {/* Mid Spacer */}
           <div className="col-span-0 md:col-span-1 lg:col-span-1"></div>
 

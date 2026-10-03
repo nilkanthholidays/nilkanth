@@ -32,7 +32,7 @@ export function FooterSection() {
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
   <span className="block">200+ Packages</span>
   <span className="block">250+ Reviews</span>
-  <span className="block">2500+ Happy Customers</span>
+  <span className="block">2500+ Happy Customers </span>
 </p>
           </div>
 

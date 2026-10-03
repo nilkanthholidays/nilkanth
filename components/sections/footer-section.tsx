@@ -26,9 +26,14 @@ export function FooterSection() {
             <Link href="/" className="text-lg font-medium text-foreground">
               NILKANTH HOLIDAYS
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+            {/* <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Discover world-class tours across India and internationally. We craft unforgettable journeys with expert local knowledge and personalized service.
-            </p>
+            </p> */}
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+  <span className="block">200+ Packages</span>
+  <span className="block">250+ Reviews</span>
+  <span className="block">2500+ Happy Customers</span>
+</p>
           </div>
 
           {/* Mid Spacer */}

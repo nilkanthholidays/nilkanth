@@ -1,9 +1,9 @@
 "use client";
 
 const stats = [
-  { label: "Total Packages", value: "150+" },
-  { label: "Reviews", value: "120+" },
-  { label: "Happy Travelers", value: "1000+" },
+  { label: "Total Packages", value: "200+" },
+  { label: "Reviews", value: "250+" },
+  { label: "Happy Travelers", value: "2500+" },
 ];
 
 export function EditorialSection() {
